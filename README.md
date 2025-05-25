@@ -15,51 +15,8 @@ Gestión de tareas y pedidos.
 Navegación lateral para acceder a diferentes secciones.
 La app utiliza Firebase Firestore para almacenamiento de datos, incluyendo categorías, servicios populares y reservas. Además, implementa componentes Material Design como BottomAppBar, FloatingActionButtons y RecyclerViews.
 
-Estructura del Proyecto
-SparkV/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com.example.sparkv_app/
-│   │   │   │       ├── Cliente/
-│   │   │   │       │   ├── Activity/
-│   │   │   │       │   │   ├── ClienteMainActivity.java
-│   │   │   │       │   │   ├── PerfilActivity.java
-│   │   │   │       │   │   ├── SoporteActivity.java
-│   │   │   │       │   │   └── ...
-│   │   │   │       │   ├── Domain/
-│   │   │   │       │   │   ├── CategoriaDomain.java
-│   │   │   │       │   │   └── PopularDomain.java
-│   │   │   │       │   └── Adaptador/
-│   │   │   │       │       ├── CategoriasAdaptador.java
-│   │   │   │       │       └── PopularAdaptador.java
-│   │   │   │       └── Admin/
-│   │   │   │           ├── BaseActivity.java
-│   │   │   │           └── ...
-│   │   │   ├── res/
-│   │   │   │   ├── layout/
-│   │   │   │   │   ├── activity_main.xml
-│   │   │   │   │   ├── activity_perfil.xml
-│   │   │   │   │   └── ...
-│   │   │   │   ├── drawable/
-│   │   │   │   │   ├── person_24.png
-│   │   │   │   │   ├── shopping_cart.png
-│   │   │   │   │   └── ...
-│   │   │   │   ├── values/
-│   │   │   │   │   ├── colors.xml
-│   │   │   │   │   └── strings.xml
-│   │   │   │   └── menu/
-│   │   │   │       └── menu_lateral.xml
-│   │   │   └── AndroidManifest.xml
-│   │   └── build.gradle
-│   └── build/
-│       └── ... (archivos compilados)
-├── .idea/
-│   └── ... (configuración de IntelliJ IDEA)
-├── .gradle/
-│   └── ... (dependencias Gradle)
-└── README.md
+![image](https://github.com/user-attachments/assets/f9313880-ba35-4c21-a211-8d60eb0ed934)
+
 
 Requisitos
 Antes de comenzar a trabajar con el proyecto, asegúrate de tener instalado lo siguiente:
