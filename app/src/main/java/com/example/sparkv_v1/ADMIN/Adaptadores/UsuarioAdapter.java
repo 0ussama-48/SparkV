@@ -44,7 +44,6 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
         holder.textViewCorreo.setText(usuario.getCorreo());
         holder.textViewRol.setText("Rol: " + usuario.getRol());
 
-        // Configurar clic del botón Editar
         holder.btnEditar.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onEditClick(usuario);
@@ -66,7 +65,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
             textViewNombre = itemView.findViewById(R.id.textViewNombre);
             textViewCorreo = itemView.findViewById(R.id.textViewCorreo);
             textViewRol = itemView.findViewById(R.id.textViewRol);
-            btnEditar = itemView.findViewById(R.id.btnEditar); // Asegúrate de que el botón exista en item_usuario.xml
+            btnEditar = itemView.findViewById(R.id.btnEditar);
         }
     }
 }

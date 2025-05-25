@@ -12,7 +12,6 @@ import com.example.sparkv_v1.ADMIN.Clases.Usuario;
 import com.example.sparkv_v1.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-// EditarUsuarioActivity.java
 public class EditarUsuarioActivity extends AppCompatActivity {
 
     private EditText edtNombre, edtCorreo, edtRol;
@@ -32,7 +31,7 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         edtCorreo = findViewById(R.id.edtCorreo);
         edtRol = findViewById(R.id.edtRol);
         btnSave = findViewById(R.id.btnSave);
-        btnEliminar = findViewById(R.id.btnEliminar); // Nuevo botón
+        btnEliminar = findViewById(R.id.btnEliminar);
 
         if (usuario != null) {
             edtNombre.setText(usuario.getNombre());
@@ -40,12 +39,6 @@ public class EditarUsuarioActivity extends AppCompatActivity {
             edtRol.setText(usuario.getRol());
         }
 
-        // Guardar cambios
-        btnSave.setOnClickListener(v -> {
-            // ... (código existente para actualizar)
-        });
-
-        // Eliminar usuario
         btnEliminar.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
                     .setTitle("Eliminar Usuario")

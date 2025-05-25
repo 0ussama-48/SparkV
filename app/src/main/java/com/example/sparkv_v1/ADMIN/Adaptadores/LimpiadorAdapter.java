@@ -55,7 +55,7 @@ public class LimpiadorAdapter extends RecyclerView.Adapter<LimpiadorAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            email = itemView.findViewById(R.id.tvLimpiadorEmail); // Este debe coincidir exactamente con item_limpiador.xml
+            email = itemView.findViewById(R.id.tvLimpiadorEmail);
         }
     }
 }

@@ -36,17 +36,14 @@ public class DireccionesActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        // Referencias a los elementos del layout
         recyclerViewDirecciones = findViewById(R.id.recyclerViewDirecciones);
         addAddressButton = findViewById(R.id.addAddressButton);
 
-        // Configurar RecyclerView
         direccionesList = new ArrayList<>();
         adapter = new DireccionesAdaptador(direccionesList, this);
         recyclerViewDirecciones.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewDirecciones.setAdapter(adapter);
 
-        // Obtener direcciones del usuario desde Firestore
         String userId = mAuth.getCurrentUser().getUid();
         db.collection("users").document(userId).collection("direcciones")
                 .get()
@@ -61,7 +58,6 @@ public class DireccionesActivity extends AppCompatActivity {
                     }
                 });
 
-        // Acción del botón "Agregar Dirección"
         addAddressButton.setOnClickListener(v -> {
             Intent intent = new Intent(DireccionesActivity.this, AgregarDireccionActivity.class);
             startActivity(intent);

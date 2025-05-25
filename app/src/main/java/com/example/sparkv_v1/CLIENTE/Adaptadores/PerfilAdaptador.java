@@ -14,9 +14,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.sparkv_v1.CLIENTE.Actividades.Perfil.DireccionesActivity;
 import com.example.sparkv_v1.CLIENTE.Actividades.Perfil.EditarPerfilActivity;
-import com.example.sparkv_v1.CLIENTE.Actividades.Perfil.MisReservasActivity;
 import com.example.sparkv_v1.CLIENTE.Actividades.Perfil.TerminosCondicionesActivity;
 import com.example.sparkv_v1.CLIENTE.Actividades.Soporte.PoliticaPrivacidadActividad;
 import com.example.sparkv_v1.CLIENTE.Clases.Opcion;
@@ -70,19 +68,6 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.ViewHo
                     break;
             }
         });
-    }
-
-    private void toggleDarkMode() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("MODE", Context.MODE_PRIVATE);
-        boolean isDarkMode = sharedPreferences.getBoolean("darkMode", false);
-
-        // Alternar entre modo claro y oscuro
-        AppCompatDelegate.setDefaultNightMode(isDarkMode ? AppCompatDelegate.MODE_NIGHT_NO : AppCompatDelegate.MODE_NIGHT_YES);
-
-        // Guardar la preferencia en SharedPreferences
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("darkMode", !isDarkMode);
-        editor.apply();
     }
 
     @Override

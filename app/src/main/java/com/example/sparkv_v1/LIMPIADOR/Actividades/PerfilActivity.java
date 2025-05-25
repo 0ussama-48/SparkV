@@ -53,25 +53,20 @@ public class PerfilActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference().child("profile_pictures");
 
-        // Referencias a los elementos del layout
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         bio = findViewById(R.id.bio);
         logoutButton = findViewById(R.id.logoutButton);
 
-        // Validar que las vistas existan
         if (username == null || email == null || bio == null || logoutButton == null) {
             Log.e("PerfilActivity", "Error: Una o más vistas no están inicializadas correctamente");
             finish();
             return;
         }
 
-
-        // Referencias al RecyclerView
         RecyclerView recyclerViewOptions = findViewById(R.id.recyclerViewOptions);
         recyclerViewOptions.setLayoutManager(new LinearLayoutManager(this));
 
-        // Datos de las opciones
         ArrayList<Opcion> opciones = new ArrayList<>();
         opciones.add(new Opcion("Editar perfil", R.drawable.ic_edit_profile));
         opciones.add(new Opcion("Cambiar contraseña", R.drawable.ic_change_password));
@@ -79,7 +74,6 @@ public class PerfilActivity extends AppCompatActivity {
         opciones.add(new Opcion("Política de Privacidad", R.drawable.ic_privacy_policy));
         opciones.add(new Opcion("Términos y Condiciones", R.drawable.ic_terms_conditions));
 
-        // Configurar adaptador
         PerfilAdaptador adapter = new PerfilAdaptador(opciones, this);
         recyclerViewOptions.setAdapter(adapter);
 
@@ -96,7 +90,6 @@ public class PerfilActivity extends AppCompatActivity {
                                 String userEmail = document.getString("email");
                                 String bioText = document.getString("bio");
 
-                                // Actualizar UI
                                 username.setText(name != null ? name : "Usuario");
                                 email.setText(userEmail != null ? userEmail : "Correo no disponible");
                                 bio.setText(bioText != null ? bioText : "Biografía no disponible");
@@ -110,7 +103,6 @@ public class PerfilActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            // Si no hay usuario autenticado, redirigir a LoginActivity
             startActivity(new Intent(PerfilActivity.this, LoginActivity.class));
             finish();
         }
@@ -120,7 +112,7 @@ public class PerfilActivity extends AppCompatActivity {
             mAuth.signOut(); // Cerrar sesión
             Intent intent = new Intent(PerfilActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish(); // Finalizar la actividad actual
+            finish();
         });
 
 
@@ -166,10 +158,8 @@ public class PerfilActivity extends AppCompatActivity {
             Uri selectedImageUri = data.getData();
             if (selectedImageUri != null) {
                 try {
-                    // Mostrar imagen seleccionada con Glide
                     Glide.with(this).load(selectedImageUri).into(profilePicture);
 
-                    // Subir imagen a Firebase Storage y guardar URL en Firestore
                     subirImagenPerfil(selectedImageUri);
                 } catch (Exception e) {
                     Toast.makeText(this, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
@@ -194,7 +184,6 @@ public class PerfilActivity extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
                         String imageUrl = uri.toString();
 
-                        // Actualizar Firestore con la nueva URL
                         db.collection("users").document(userId)
                                 .update("profilePictureUrl", imageUrl)
                                 .addOnSuccessListener(aVoid -> {

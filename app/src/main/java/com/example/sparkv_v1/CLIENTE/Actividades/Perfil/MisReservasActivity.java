@@ -39,7 +39,6 @@ public class MisReservasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_reservas);
 
-        // Inicializar Firebase
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
@@ -137,7 +136,6 @@ public class MisReservasActivity extends AppCompatActivity {
                     } else {
                         tvSinReservas.setVisibility(View.GONE);
                         for (QueryDocumentSnapshot document : querySnapshot) {
-                            // Obtener el campo "items" directamente como ArrayList
                             Object itemsObj = document.get("items");
                             if (itemsObj instanceof ArrayList) {
                                 ArrayList<?> itemsList = (ArrayList<?>) itemsObj;

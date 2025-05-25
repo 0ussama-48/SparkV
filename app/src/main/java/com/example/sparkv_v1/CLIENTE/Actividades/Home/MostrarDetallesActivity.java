@@ -14,7 +14,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 import com.example.sparkv_v1.CLIENTE.Clases.CarritoItem;
-import com.example.sparkv_v1.CLIENTE.Adaptadores.PopularDomain;
+import com.example.sparkv_v1.CLIENTE.Clases.PopularDomain;
 import com.example.sparkv_v1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -76,7 +76,7 @@ public class MostrarDetallesActivity extends AppCompatActivity {
         duracionTxt.setText("Duración: " + item.getDuracion());
         detallesAdicionalesTxt.setText("Detalles: " + item.getDetallesAdicionales());
 
-        // Cargar imagen con Glide
+        // Cargar imagen (esta funcion la he quitado pero lo dejo de momento para que no falla la app 😅))
         String resourceName = item.getPic();
         if (resourceName != null && !resourceName.isEmpty()) {
             int drawableResourceId = getResources().getIdentifier(
@@ -154,7 +154,7 @@ public class MostrarDetallesActivity extends AppCompatActivity {
                             item.getCategoria(),
                             item.getDuracion(),
                             item.getDetallesAdicionales(),
-                            fechaSeleccionadaStr, // Asegúrate de que se pasa correctamente
+                            fechaSeleccionadaStr,
                             horaSeleccionadaStr,
                             item.getServicioId()
                     ))

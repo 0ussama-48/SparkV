@@ -45,7 +45,6 @@ public class DireccionesAdaptador extends RecyclerView.Adapter<DireccionesAdapta
 
         // Configurar OnClickListener para seleccionar dirección
         holder.itemView.setOnClickListener(v -> {
-            // Devolver dirección seleccionada a CarritoActivity
             Intent resultIntent = new Intent();
             resultIntent.putExtra("selected_calle", direccion.getCalle());
             resultIntent.putExtra("selected_numero", direccion.getNumeroCasa());

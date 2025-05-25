@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sparkv_v1.ADMIN.Adaptadores.UsuarioAdapter;
 import com.example.sparkv_v1.ADMIN.Clases.Usuario;
-import com.example.sparkv_v1.ADMIN.Actividades.PerfilActivity;
 import com.example.sparkv_v1.LoginActivity;
 import com.example.sparkv_v1.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -51,7 +50,6 @@ public class GestionUsuariosActivity extends AppCompatActivity implements Usuari
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Configurar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         setupDrawer(toolbar);
@@ -61,6 +59,7 @@ public class GestionUsuariosActivity extends AppCompatActivity implements Usuari
         listaUsuarios = new ArrayList<>();
         adapter = new UsuarioAdapter(listaUsuarios, this);
         recyclerViewUsuarios.setAdapter(adapter);
+
         // Manejar clics en el menú
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();

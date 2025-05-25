@@ -52,6 +52,7 @@ public class PanelControlActivity extends AppCompatActivity {
         tvPedidosActivos = findViewById(R.id.tvPedidosActivos);
         tvPedidosCompletados = findViewById(R.id.tvPedidosCompletados);
         tvIngresosTotales = findViewById(R.id.tvIngresosTotales);
+
         // Manejar clics en el menú
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -76,14 +77,12 @@ public class PanelControlActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
-        // Cargar estadísticas
         cargarEstadisticas();
     }
 
     private void cargarEstadisticas() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Total de Usuarios (Clientes)
         db.collection("users").whereEqualTo("role", "cliente").get()
                 .addOnSuccessListener(querySnapshot -> {
                     tvTotalUsuarios.setText(querySnapshot.size() + " Clientes");
@@ -113,7 +112,6 @@ public class PanelControlActivity extends AppCompatActivity {
                     Log.e("Admin", "Error al cargar pedidos: ", e);
                 });
 
-        // Pedidos Activos (estado = "pendiente")
         db.collection("pedidos_finalizados").whereEqualTo("estado", "pendiente").get()
                 .addOnSuccessListener(querySnapshot -> {
                     tvPedidosActivos.setText(querySnapshot.size() + " Activos");
@@ -123,7 +121,6 @@ public class PanelControlActivity extends AppCompatActivity {
                     Log.e("Admin", "Error al cargar pedidos activos: ", e);
                 });
 
-        // Pedidos Completados (estado = "completado")
         db.collection("pedidos_finalizados").whereEqualTo("estado", "completado").get()
                 .addOnSuccessListener(querySnapshot -> {
                     tvPedidosCompletados.setText(querySnapshot.size() + " Completados");
@@ -133,7 +130,6 @@ public class PanelControlActivity extends AppCompatActivity {
                     Log.e("Admin", "Error al cargar pedidos completados: ", e);
                 });
 
-        // Ingresos Totales (sumar "total" en pedidos completados)
         db.collection("pedidos_finalizados").get()
                 .addOnSuccessListener(querySnapshot -> {
                     double ingresos = 0;

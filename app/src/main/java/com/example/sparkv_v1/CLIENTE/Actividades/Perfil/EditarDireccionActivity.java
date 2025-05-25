@@ -29,14 +29,12 @@ public class EditarDireccionActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        // Obtener los datos pasados desde el adaptador
         Intent intent = getIntent();
         direccionId = intent.getStringExtra("id");
 
         if (direccionId == null || direccionId.isEmpty()) {
-            // Mostrar mensaje de error si el ID no está presente
             Toast.makeText(this, "Error: ID de dirección no encontrado", Toast.LENGTH_SHORT).show();
-            finish(); // Cerrar la actividad
+            finish();
             return;
         }
 
@@ -45,7 +43,6 @@ public class EditarDireccionActivity extends AppCompatActivity {
         String ciudad = intent.getStringExtra("ciudad");
         String codigoPostal = intent.getStringExtra("codigoPostal");
 
-        // Referencias a los elementos del layout
         calleInput = findViewById(R.id.calleInput);
         numeroCasaInput = findViewById(R.id.numeroCasaInput);
         ciudadInput = findViewById(R.id.ciudadInput);
@@ -53,7 +50,6 @@ public class EditarDireccionActivity extends AppCompatActivity {
         guardarButton = findViewById(R.id.guardarButton);
         eliminarButton = findViewById(R.id.eliminarButton);
 
-        // Rellenar los campos con los datos existentes
         calleInput.setText(calle);
         numeroCasaInput.setText(numeroCasa);
         ciudadInput.setText(ciudad);
@@ -66,7 +62,6 @@ public class EditarDireccionActivity extends AppCompatActivity {
             String nuevaCiudad = ciudadInput.getText().toString().trim();
             String nuevoCodigoPostal = codigoPostalInput.getText().toString().trim();
 
-            // Validar campos
             if (nuevaCalle.isEmpty() || nuevoNumeroCasa.isEmpty() || nuevaCiudad.isEmpty() || nuevoCodigoPostal.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
                 return;
@@ -83,7 +78,7 @@ public class EditarDireccionActivity extends AppCompatActivity {
                     )
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(this, "Dirección actualizada correctamente", Toast.LENGTH_SHORT).show();
-                        finish(); // Regresar a la actividad anterior
+                        finish();
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(this, "Error al guardar la dirección", Toast.LENGTH_SHORT).show();
@@ -97,7 +92,7 @@ public class EditarDireccionActivity extends AppCompatActivity {
                     .delete()
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(this, "Dirección eliminada correctamente", Toast.LENGTH_SHORT).show();
-                        finish(); // Regresar a la actividad anterior
+                        finish();
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(this, "Error al eliminar la dirección", Toast.LENGTH_SHORT).show();

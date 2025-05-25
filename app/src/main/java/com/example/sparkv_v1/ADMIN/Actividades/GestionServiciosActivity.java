@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sparkv_v1.ADMIN.Adaptadores.ServicioAdapter;
 import com.example.sparkv_v1.ADMIN.Clases.Servicio;
-import com.example.sparkv_v1.ADMIN.Actividades.PerfilActivity;
 import com.example.sparkv_v1.LoginActivity;
 import com.example.sparkv_v1.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -49,17 +48,16 @@ public class GestionServiciosActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Configurar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         setupDrawer(toolbar);
 
-        // Configurar RecyclerView
         recyclerViewServicios = findViewById(R.id.recyclerViewServicios);
         recyclerViewServicios.setLayoutManager(new LinearLayoutManager(this));
         listaServicios = new ArrayList<>();
         adapter = new ServicioAdapter(listaServicios, this::onEditClick);
         recyclerViewServicios.setAdapter(adapter);
+
         // Manejar clics en el menú
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -85,7 +83,6 @@ public class GestionServiciosActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
-        // Verificar rol de administrador
         verificarRol();
     }
 

@@ -2,18 +2,16 @@ package com.example.sparkv_v1.CLIENTE.Clases;
 
 import java.io.Serializable;
 
-public class Pedido implements Serializable { // Implementar Serializable
-    private String id; // Renombrar para usar el ID de Firestore
+public class Pedido implements Serializable {
+    private String id;
     private String idCliente;
     private String idServicio;
     private double total;
     private String metodoPago;
     private String estado;
 
-    // Constructor vacío (requerido para Firebase)
     public Pedido() {}
 
-    // Constructor con parámetros
     public Pedido(String id, String idCliente, String idServicio, double total, String metodoPago, String estado) {
         this.id = id;
         this.idCliente = idCliente;

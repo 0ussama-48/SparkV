@@ -7,7 +7,6 @@ public class CarritoItem implements Serializable {
     private double precio;
     private int cantidad;
 
-    // Constructor sin argumentos (requerido por Firestore)
     public CarritoItem() {}
 
     public CarritoItem(String nombre, double precio, int cantidad, String categoria, String duracion, String detalles, String fecha, String hora, String servicioId) {

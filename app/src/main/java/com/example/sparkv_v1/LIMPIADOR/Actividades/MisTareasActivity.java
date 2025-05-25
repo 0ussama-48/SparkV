@@ -148,9 +148,7 @@ public class MisTareasActivity extends AppCompatActivity implements TareaAdapter
                     Toast.makeText(this, "Error al cargar tareas: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
-    /**
-     * Método implementado desde OnItemClickListener.
-     */
+
     @Override
     public void onItemClick(Pedido pedido) {
         mostrarDetallesPedido(pedido);

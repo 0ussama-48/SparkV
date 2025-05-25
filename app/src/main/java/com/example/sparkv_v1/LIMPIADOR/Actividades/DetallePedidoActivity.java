@@ -2,7 +2,6 @@ package com.example.sparkv_v1.LIMPIADOR.Actividades;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,9 +12,6 @@ import com.example.sparkv_v1.LIMPIADOR.Clases.Pedido;
 import com.example.sparkv_v1.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 public class DetallePedidoActivity extends AppCompatActivity {
     private TextView tvUsuario, tvTotal, tvItems, tvFecha, tvHora, tvDireccion;
@@ -38,7 +34,6 @@ public class DetallePedidoActivity extends AppCompatActivity {
         tvDireccion = findViewById(R.id.tvDireccion);
         btnFinalizar = findViewById(R.id.btnFinalizar);
 
-        // Recuperar el objeto Pedido desde la intención
         pedido = (Pedido) getIntent().getSerializableExtra(PEDIDO_EXTRA);
 
         if (pedido == null) {

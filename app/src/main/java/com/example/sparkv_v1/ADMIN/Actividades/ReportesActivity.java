@@ -47,12 +47,10 @@ public class ReportesActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Configurar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         setupDrawer(toolbar);
 
-        // Configurar RecyclerView
         recyclerViewReportes = findViewById(R.id.recyclerViewReportes);
         recyclerViewReportes.setLayoutManager(new LinearLayoutManager(this));
         listaReportes = new ArrayList<>();
@@ -83,7 +81,6 @@ public class ReportesActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
-        // Verificar rol de administrador
         verificarRol();
     }
 
@@ -119,7 +116,7 @@ public class ReportesActivity extends AppCompatActivity {
                     for (DocumentSnapshot document : querySnapshot.getDocuments()) {
                         String descripcion = document.getString("descripcion");
                         String userId = document.getString("userId");
-                        String userName = document.getString("userName"); // Asegúrate de usar "userName"
+                        String userName = document.getString("userName");
                         String fecha = document.getString("fecha");
 
                         if (descripcion != null && userId != null && userName != null && fecha != null) {

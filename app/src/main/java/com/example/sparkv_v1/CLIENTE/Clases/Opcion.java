@@ -2,7 +2,7 @@ package com.example.sparkv_v1.CLIENTE.Clases;
 
 public class Opcion {
     private String titulo;
-    private int icono; // Recurso de ícono
+    private int icono;
 
     public Opcion(String titulo, int icono) {
         this.titulo = titulo;

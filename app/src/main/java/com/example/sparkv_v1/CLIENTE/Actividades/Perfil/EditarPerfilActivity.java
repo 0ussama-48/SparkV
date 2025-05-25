@@ -33,7 +33,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        // Referencias a los elementos del layout
         ImageView volverBtn = findViewById(R.id.volverBtn);
         usernameInput = findViewById(R.id.usernameInput);
         emailInput = findViewById(R.id.emailInput);
@@ -49,7 +48,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 String email = task.getResult().getString("email");
                 String bio = task.getResult().getString("bio");
 
-                // Mostrar los datos actuales en los campos
                 usernameInput.setText(username);
                 emailInput.setText(email);
                 bioInput.setText(bio);
@@ -65,7 +63,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
             String newEmail = emailInput.getText().toString().trim();
             String newBio = bioInput.getText().toString().trim();
 
-            // Validar campos
             if (newUsername.isEmpty()) {
                 usernameInput.setError("El nombre es obligatorio");
                 return;
@@ -84,7 +81,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
             userRef.update(updates).addOnCompleteListener(updateTask -> {
                 if (updateTask.isSuccessful()) {
                     Toast.makeText(this, "Cambios guardados", Toast.LENGTH_SHORT).show();
-                    finish(); // Regresar a la pantalla anterior
+                    finish();
                 } else {
                     Toast.makeText(this, "Error al guardar cambios", Toast.LENGTH_SHORT).show();
                 }

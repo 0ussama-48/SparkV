@@ -2,7 +2,6 @@ package com.example.sparkv_v1.ADMIN.Actividades;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +13,6 @@ import com.example.sparkv_v1.ADMIN.Clases.Limpiador;
 import com.example.sparkv_v1.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,7 +82,7 @@ public class SeleccionarLimpiadorActivity extends AppCompatActivity {
                     listaLimpiadores.clear();
                     for (DocumentSnapshot document : querySnapshot.getDocuments()) {
                         String email = document.getString("email");
-                        String userId = document.getId(); // Usamos el ID del documento
+                        String userId = document.getId();
 
                         if (email != null && userId != null) {
                             listaLimpiadores.add(new Limpiador(userId, email));
@@ -95,7 +92,7 @@ public class SeleccionarLimpiadorActivity extends AppCompatActivity {
                     }
 
                     Log.d("Admin", "Lista de limpiadores cargada: " + listaLimpiadores.toString());
-                    adapter.notifyDataSetChanged(); // Notificar al adaptador
+                    adapter.notifyDataSetChanged();
                 })
                 .addOnFailureListener(e -> {
                     Log.e("Admin", "Error al cargar limpiadores: ", e);

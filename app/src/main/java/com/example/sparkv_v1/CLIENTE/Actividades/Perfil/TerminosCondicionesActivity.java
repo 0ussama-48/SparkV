@@ -18,7 +18,6 @@ public class TerminosCondicionesActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Habilitar flecha de retroceso
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -32,7 +31,7 @@ public class TerminosCondicionesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Regresar a la actividad anterior
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

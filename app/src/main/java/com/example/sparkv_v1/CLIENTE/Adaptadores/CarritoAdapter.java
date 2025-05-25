@@ -37,7 +37,6 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CarritoItem item = carritoItems.get(position);
 
-        // Mostrar datos sin imagen
         holder.nombre.setText(item.getNombre());
         holder.precio.setText("€" + item.getPrecio());
         holder.cantidad.setText("Cantidad: " + item.getCantidad());

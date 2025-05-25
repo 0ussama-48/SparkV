@@ -14,8 +14,7 @@ import com.example.sparkv_v1.CLIENTE.Actividades.Perfil.PerfilActivity;
 import com.example.sparkv_v1.R;
 import com.google.android.material.navigation.NavigationView;
 
-// BaseActivity.java
-// BaseActivity.java
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
@@ -30,11 +29,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Configurar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        // Configurar ActionBarDrawerToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.abrir_menu, R.string.cerrar_menu);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -61,7 +58,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             return true;
         });
 
-        // Cargar contenido específico de la actividad
         FrameLayout contenedor = findViewById(R.id.container);
         getLayoutInflater().inflate(obtenerLayoutContenido(), contenedor);
     }

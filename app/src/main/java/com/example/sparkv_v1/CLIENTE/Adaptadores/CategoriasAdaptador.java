@@ -24,14 +24,6 @@ public class CategoriasAdaptador extends RecyclerView.Adapter<CategoriasAdaptado
         this.categoriaDomains = categoriaDomains;
     }
 
-    public ArrayList<CategoriaDomain> getCategoriaDomains() {
-        return categoriaDomains;
-    }
-
-    public void setCategoriaDomains(ArrayList<CategoriaDomain> categoriaDomains) {
-        this.categoriaDomains = categoriaDomains;
-    }
-
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_categoria,parent,false);

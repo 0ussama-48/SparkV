@@ -32,12 +32,10 @@ public class SoporteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soporte);
 
-        // Referencias a los elementos del layout
         faqRecyclerView = findViewById(R.id.faqRecyclerView);
         faqList = new ArrayList<>();
         faqAdaptador = new FaqAdaptador(faqList, this);
 
-        // Configurar RecyclerView
         faqRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         faqRecyclerView.setAdapter(faqAdaptador);
 
@@ -89,11 +87,9 @@ public class SoporteActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
-        // Cargar datos locales
         loadFaqsFromLocal();
     }
 
-    // Método para cargar datos estáticos
     private void loadFaqsFromLocal() {
         faqList.clear();
         faqList.addAll(obtenerDatosLocales());

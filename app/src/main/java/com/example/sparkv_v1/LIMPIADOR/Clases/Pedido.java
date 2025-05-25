@@ -13,7 +13,6 @@ public class Pedido implements Serializable {
     private String direccion;
     private ArrayList<Item> items;
 
-    // Constructor vacío necesario para Firestore
     public Pedido() {}
 
     public Pedido(String id, String idUsuario, Double total, ArrayList<Item> items, String idLimpiador) {
@@ -31,7 +30,6 @@ public class Pedido implements Serializable {
         private String duracion;
         private String servicioId;
 
-        // Constructor vacío necesario para Firestore
         public Item() {}
 
         public Item(String nombre, Double precio, String categoria, String duracion, String servicioId) {

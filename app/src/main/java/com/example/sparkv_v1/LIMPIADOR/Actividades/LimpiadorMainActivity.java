@@ -45,19 +45,12 @@ public class LimpiadorMainActivity extends AppCompatActivity implements OnMapRea
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        // Configurar el RecyclerView
         setupRecyclerView();
-
-        // Configurar el mapa
         setupMap();
-
-        // Obtener pedidos asignados al limpiador actual
         fetchAssignedOrders();
     }
 
-    /**
-     * Configura el fragmento de mapa y lo inicializa.
-     */
+
     private void setupMap() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
         if (mapFragment != null) {
@@ -67,9 +60,6 @@ public class LimpiadorMainActivity extends AppCompatActivity implements OnMapRea
         }
     }
 
-    /**
-     * Configura el RecyclerView con datos de ejemplo.
-     */
     private void setupRecyclerView() {
         RecyclerView recyclerViewTasks = findViewById(R.id.taskSummary);
         recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
@@ -77,16 +67,12 @@ public class LimpiadorMainActivity extends AppCompatActivity implements OnMapRea
         TaskAdapter taskAdapter = new TaskAdapter(tasks);
         recyclerViewTasks.setAdapter(taskAdapter);
 
-        // Animación de entrada para el RecyclerView
         recyclerViewTasks.setAlpha(0f);
         recyclerViewTasks.animate().alpha(1f).setDuration(500).start();
     }
 
-    /**
-     * Obtiene las tareas/pedidos asignadas al usuario desde Firestore.
-     */
     private void fetchAssignedOrders() {
-        String userId = mAuth.getCurrentUser().getUid(); // ID del usuario autenticado
+        String userId = mAuth.getCurrentUser().getUid();
 
         db.collection("pedidos_asignados")
                 .whereEqualTo("idLimpiador", userId)
@@ -119,7 +105,6 @@ public class LimpiadorMainActivity extends AppCompatActivity implements OnMapRea
 
                                                 tasks.add(taskDomain);
 
-                                                // Notificar al adaptador
                                                 RecyclerView recyclerViewTasks = findViewById(R.id.taskSummary);
                                                 TaskAdapter adapter = (TaskAdapter) recyclerViewTasks.getAdapter();
                                                 if (adapter != null) {
@@ -151,7 +136,7 @@ public class LimpiadorMainActivity extends AppCompatActivity implements OnMapRea
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zaragoza, 12));
     }
     private void CargarLocalizacionesEnMapa() {
-        String userId = mAuth.getCurrentUser().getUid(); // ID del usuario autenticado
+        String userId = mAuth.getCurrentUser().getUid();
 
         db.collection("pedidos_asignados")
                 .whereEqualTo("idLimpiador", userId)
@@ -203,7 +188,7 @@ public class LimpiadorMainActivity extends AppCompatActivity implements OnMapRea
         } catch (Exception e) {
             Log.e("Admin", "Error al obtener ubicación: ", e);
         }
-        return null; // Si hay un error o no se encuentra la ubicación
+        return null;
     }
 
     /**

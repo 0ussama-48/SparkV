@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.sparkv_v1.CLIENTE.Actividades.Home.MostrarDetallesActivity;
+import com.example.sparkv_v1.CLIENTE.Clases.PopularDomain;
 import com.example.sparkv_v1.R;
 
 import java.util.ArrayList;
@@ -36,14 +37,12 @@ public class PopularAdaptador extends RecyclerView.Adapter<PopularAdaptador.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PopularDomain item = popularesDomains.get(position);
 
-        // Asignar texto a los TextViews con validaciones
         holder.titulo.setText(item.getTitle() != null ? item.getTitle() : "Servicio no disponible");
         holder.fee.setText(item.getFee() != null ? String.valueOf(item.getFee()) : "0.0 €");
         holder.categoriaTxt.setText("Categoría: " + (item.getCategoria() != null ? item.getCategoria() : "Sin categoría"));
         holder.duracionTxt.setText("Duración: " + (item.getDuracion() != null ? item.getDuracion() : "N/A"));
         holder.detallesAdicionalesTxt.setText("Detalles: " + (item.getDetallesAdicionales() != null ? item.getDetallesAdicionales() : "No hay detalles"));
 
-        // Cargar imagen con Glide y fallback
         String resourceName = item.getPic();
         if (resourceName != null && !resourceName.isEmpty()) {
             int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(
@@ -57,7 +56,7 @@ public class PopularAdaptador extends RecyclerView.Adapter<PopularAdaptador.View
                         .into(holder.pic);
             } else {
                 Glide.with(holder.itemView.getContext())
-                        .load(R.drawable.person_24) // Asegúrate de tener este recurso
+                        .load(R.drawable.person_24)
                         .into(holder.pic);
             }
         } else {
@@ -69,7 +68,7 @@ public class PopularAdaptador extends RecyclerView.Adapter<PopularAdaptador.View
         // Navegar a MostrarDetallesActivity
         holder.anadirBtn.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), MostrarDetallesActivity.class);
-            intent.putExtra("object", item); // Asegúrate de que PopularDomain implemente Serializable
+            intent.putExtra("object", item);
             holder.itemView.getContext().startActivity(intent);
         });
     }

@@ -28,29 +28,24 @@ public class CambiarContrasenaActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Vincular elementos de la interfaz
         contrasenaActualInput = findViewById(R.id.contrasenaActualInput);
         nuevaContrasenaInput = findViewById(R.id.nuevaContrasenaInput);
         botonConfirmarCambio = findViewById(R.id.botonConfirmarCambio);
 
-        // Configurar el botón de confirmación
         botonConfirmarCambio.setOnClickListener(v -> {
             String contrasenaActual = contrasenaActualInput.getText().toString().trim();
             String nuevaContrasena = nuevaContrasenaInput.getText().toString().trim();
 
-            // Validar campos
             if (contrasenaActual.isEmpty() || nuevaContrasena.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Validar longitud de la nueva contraseña
             if (nuevaContrasena.length() < 6) {
                 Toast.makeText(this, "La nueva contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Cambiar la contraseña
             cambiarContrasena(contrasenaActual, nuevaContrasena);
         });
     }

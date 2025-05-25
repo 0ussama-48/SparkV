@@ -17,8 +17,6 @@ import com.example.sparkv_v1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -80,15 +78,15 @@ public class HistorialActivity extends AppCompatActivity implements TareaAdapter
     }
 
     private void cargarPedidosHistorial() {
-        String userId = mAuth.getCurrentUser().getUid(); // 👈 ID del limpiador autenticado
+        String userId = mAuth.getCurrentUser().getUid();
 
-        Log.d("Historial", "UID del usuario autenticado: " + userId); // 👈 Log 1
+        Log.d("Historial", "UID del usuario autenticado: " + userId);
 
         db.collection("historial_pedidos")
                 .whereEqualTo("idLimpiador", userId)
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
-                    Log.d("Historial", "Número de documentos recuperados: " + querySnapshot.size()); // 👈 Log 2
+                    Log.d("Historial", "Número de documentos recuperados: " + querySnapshot.size());
 
                     if (!querySnapshot.isEmpty()) {
                         for (DocumentSnapshot document : querySnapshot.getDocuments()) {
@@ -122,13 +120,13 @@ public class HistorialActivity extends AppCompatActivity implements TareaAdapter
                                         itemsList,
                                         userId
                                 ));
-                                Log.d("Historial", "Pedido agregado: " + document.getId()); // 👈 Log 3
+                                Log.d("Historial", "Pedido agregado: " + document.getId());
                             } else {
                                 Log.e("Historial", "Datos incompletos en documento: " + document.getId());
                             }
                         }
                         adapter.notifyDataSetChanged();
-                        Log.d("Historial", "Adapter actualizado con " + listaHistorial.size() + " elementos"); // 👈 Log 4
+                        Log.d("Historial", "Adapter actualizado con " + listaHistorial.size() + " elementos");
                     } else {
                         TextView tvSinPedidos = findViewById(R.id.tvSinPedidos);
                         tvSinPedidos.setVisibility(View.VISIBLE);
@@ -141,9 +139,6 @@ public class HistorialActivity extends AppCompatActivity implements TareaAdapter
                 });
     }
 
-    /**
-     * Método implementado desde OnItemClickListener.
-     */
     @Override
     public void onItemClick(Pedido pedido) {
         mostrarDetallesPedido(pedido);

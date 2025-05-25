@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sparkv_v1.ADMIN.Adaptadores.PedidoAdapter;
 import com.example.sparkv_v1.ADMIN.Clases.Pedido;
-import com.example.sparkv_v1.ADMIN.Actividades.PerfilActivity;
 import com.example.sparkv_v1.LoginActivity;
 import com.example.sparkv_v1.R;
 import com.google.android.material.navigation.NavigationView;
@@ -23,8 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +41,6 @@ public class GestionPedidosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_pedidos);
 
-        // Inicializar Firebase
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -52,7 +48,6 @@ public class GestionPedidosActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Configurar Drawer Toggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -63,8 +58,6 @@ public class GestionPedidosActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
-        // Configurar RecyclerView
         recyclerViewPedidos = findViewById(R.id.recyclerViewPedidos);
         recyclerViewPedidos.setLayoutManager(new LinearLayoutManager(this));
         listaPedidos = new ArrayList<>();
@@ -95,7 +88,6 @@ public class GestionPedidosActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
-        // Verificar rol de administrador
         verificarRol();
     }
 

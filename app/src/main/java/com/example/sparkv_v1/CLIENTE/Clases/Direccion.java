@@ -8,7 +8,6 @@ public class Direccion {
     private String codigoPostal;
 
     public Direccion() {
-        // Constructor vacío necesario para Firestore
     }
 
     public Direccion(String id, String calle, String numeroCasa, String ciudad, String codigoPostal) {

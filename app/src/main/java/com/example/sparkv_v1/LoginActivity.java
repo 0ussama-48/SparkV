@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db; // Referencia a Firestore
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +27,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance(); // Inicializar Firestore
+        db = FirebaseFirestore.getInstance();
 
         EditText emailInput = findViewById(R.id.emailInput);
         EditText passwordInput = findViewById(R.id.passwordInput);
         TextView forgotPassword = findViewById(R.id.forgotPassword);
         TextView registerLink = findViewById(R.id.registerLink);
 
-        // Botón de inicio de sesión con correo y contraseña
+        // Botón de inicio de sesión
         findViewById(R.id.loginButton).setOnClickListener(v -> {
             String email = emailInput.getText().toString().trim();
             String password = passwordInput.getText().toString().trim();
@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
                             if (user != null) {
                                 String userId = user.getUid();
 
-                                // Consultar el rol del usuario en Firestore
                                 db.collection("users").document(userId).get()
                                         .addOnCompleteListener(snapshotTask -> {
                                             if (snapshotTask.isSuccessful()) {
@@ -59,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                                                 if (snapshot != null && snapshot.exists()) {
                                                     String role = snapshot.getString("role");
 
-                                                    // Redirigir según el rol
                                                     Intent intent;
                                                     if ("cliente".equalsIgnoreCase(role)) {
                                                         intent = new Intent(LoginActivity.this, ClienteMainActivity.class);
@@ -73,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     }
 
                                                     startActivity(intent);
-                                                    finish(); // Finaliza la actividad actual
+                                                    finish();
                                                 } else {
                                                     Toast.makeText(LoginActivity.this, "Usuario no encontrado en la base de datos", Toast.LENGTH_SHORT).show();
                                                 }
@@ -114,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
                     .show();
         });
 
-        // Ir a la pantalla de registro
         registerLink.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         });

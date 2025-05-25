@@ -15,7 +15,7 @@ import com.example.sparkv_v1.CLIENTE.Actividades.Perfil.MisReservasActivity;
 import com.example.sparkv_v1.CLIENTE.Actividades.Soporte.SoporteActivity;
 import com.example.sparkv_v1.CLIENTE.Adaptadores.CategoriasAdaptador;
 import com.example.sparkv_v1.CLIENTE.Adaptadores.PopularAdaptador;
-import com.example.sparkv_v1.CLIENTE.Adaptadores.PopularDomain;
+import com.example.sparkv_v1.CLIENTE.Clases.PopularDomain;
 import com.example.sparkv_v1.CLIENTE.Clases.CategoriaDomain;
 import com.example.sparkv_v1.CLIENTE.Actividades.Perfil.PerfilActivity;
 import com.example.sparkv_v1.R;
@@ -233,7 +233,6 @@ public class ClienteMainActivity extends AppCompatActivity {
                                     });
                         }
                     } else {
-                        // Datos existen, cargar directamente
                         recyclerViewPopular();
                     }
                 })
